@@ -1,6 +1,10 @@
 # Instructions
 
+## Installation
+
 All code assumes you have the micropython repl installed. Instructions for doing so [can be found here](https://www.raspberrypi.com/documentation/microcontrollers/micropython.html).
+
+We use Raspberry Pi Pico W in this project.
 
 For the sdcard you need to install the sdcard library from micropi-libs also; see instructions below.
 
@@ -13,11 +17,41 @@ pip install --user mpy-cross
 
 The former is a command-line tool for connecting to the micropython repl; the second is a way to cross-compile the microdot web server, which is needed because the compilation step can't be done on the pico itself.
 
+Note, you might need to add the location of mpremote to your PATH. To do that:
+
+```
+echo $SHELL
+
+#if Bash
+emacs -nw ~/.bashrc
+#if Zsh, Mac default
+emacs -nw ~/.zshrc
+
+Add this line to the file:
+export PATH=$PATH:<location of mpremote>
+
+Save and exit the file then do:
+source ~/.bashrc #Bash or
+source ~/.zshrc #Zsh
+```
 Then install the packages required.
 
 ```shell
 mpremote mip install sdcard 
 ```
+
+## Run the code
+
+First, check the connection to the board
+
+```
+ls /dev/tty.*
+```
+The board should look something like /dev/tty.usbmodem**** 
+
+
+
+
 
 ## Program flow as of 11/5/2024
 
